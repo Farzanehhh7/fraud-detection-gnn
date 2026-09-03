@@ -1,9 +1,0 @@
-dataset: samld
-file_path: datasets/SAML-D.csv
-n_rows: 1000000
-output_prefix: samld_processed_v3
-in_channels: 8
-hidden_channels: 64
-out_channels: 2
-seeds: [42, 1, 7, 123, 2024, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
-checkpoint_dir: outputs/checkpoints/samld
