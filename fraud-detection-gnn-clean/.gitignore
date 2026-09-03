@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.idea/
+datasets/
+outputs/logs/
+outputs/checkpoints/
+outputs/figures/
+outputs/metrics/
+run_log.txt
+*.pt
+*.pkl
+db.sqlite3
+!outputs/run_registry.csv

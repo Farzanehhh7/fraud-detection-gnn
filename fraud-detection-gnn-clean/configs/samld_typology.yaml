@@ -1,0 +1,20 @@
+dataset: samld
+binary_checkpoint_dir: outputs/checkpoints/samld
+min_train_samples_per_type: 10
+type_names_path: samld_type_names.json
+structural_features:
+  - in_degree
+  - out_degree
+  - gather_scatter_score
+  - degree_ratio
+  - reciprocal_count
+  - is_pass_through
+family_map:
+  0: [2, 4, 6, 7, 8, 9, 10, 12, 15]
+  1: [3, 11, 13, 14, 16]
+  2: [0, 1, 5]
+family_names:
+  0: Structural/Multi-hop
+  1: Volume/Threshold
+  2: Behavioral/Temporal
+seeds: [42, 1, 7, 123, 2024, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12]
