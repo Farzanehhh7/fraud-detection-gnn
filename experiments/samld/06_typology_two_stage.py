@@ -60,7 +60,7 @@ def main():
 
         h2 = extract_embeddings(model, x, edge_index, device).numpy()
 
-        m_base, _ = fit_and_evaluate_type_classifier(
+        _, m_base = fit_and_evaluate_type_classifier(
             torch.tensor(h2), y_type_remapped, train_mask, test_mask, num_new_types,
             seed_label=seed, verbose=False, type_names=type_names,
         )
@@ -70,7 +70,7 @@ def main():
                 checkpoint_path=ckpt_path, log_path="outputs/logs/samld_06.log")
 
         x_combined = np.concatenate([h2, struct_features_scaled], axis=1)
-        m_enh, _ = fit_and_evaluate_type_classifier(
+        _, m_enh = fit_and_evaluate_type_classifier(
             torch.tensor(x_combined), y_type_remapped, train_mask, test_mask, num_new_types,
             seed_label=seed, verbose=False, type_names=type_names,
         )
