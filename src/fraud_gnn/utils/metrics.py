@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import torch
+import os
 from sklearn.metrics import (
     average_precision_score, f1_score, matthews_corrcoef,
     precision_score, recall_score, roc_auc_score,
@@ -126,6 +127,7 @@ class EarlyStopper:
 
 
 def save_checkpoint(model, path, extra=None):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     payload = {"model_state": model.state_dict()}
     if extra:
         payload.update(extra)
