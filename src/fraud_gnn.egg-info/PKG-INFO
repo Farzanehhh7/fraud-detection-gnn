@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: fraud_gnn
+Version: 0.1.0
+Summary: Graph-based fraud detection on Elliptic Bitcoin and SAML-D — thesis project
+Requires-Python: >=3.9
+Requires-Dist: torch
+Requires-Dist: torch-geometric
+Requires-Dist: scikit-learn
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scipy
