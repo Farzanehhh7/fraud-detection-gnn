@@ -26,3 +26,8 @@ experiments/samld/09_coarse_family_classification.py
 experiments/samld/10_explainability.py
 experiments/samld/11_behavioural_change_features.py
 experiments/samld/12_behavioural_change_evaluation.py
+experiments/elliptic/01_train_tie_baseline.py
+experiments/elliptic/02_significance_test_5seed.py
+experiments/elliptic/03_diagnostics_heterophily.py
+experiments/elliptic/04_diagnostics_edge_leakage.py
+experiments/elliptic/05_hyperparameter_search.py

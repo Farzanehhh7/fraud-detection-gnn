@@ -20,18 +20,25 @@ def load_elliptic(features_path="datasets/elliptic_txs_features.csv",
     map_id, edge_index_cpu = build_edge_index(df_feat["txId"].values, df_edge["txId1"], df_edge["txId2"])
     edge_index = edge_index_cpu.to(device) if device is not None else edge_index_cpu
 
-    x_raw = df_feat.drop(columns=["txId", "time_step"]).values
-    scaler = StandardScaler()
-    x = torch.tensor(scaler.fit_transform(x_raw), dtype=torch.float)
-    y = torch.tensor(df_class["label"].values, dtype=torch.long)
-    if device is not None:
-        x, y = x.to(device), y.to(device)
-
+    y_cpu = torch.tensor(df_class["label"].values, dtype=torch.long)
     time_steps_raw = torch.tensor(df_feat["time_step"].values, dtype=torch.long)
 
-    train_mask, val_mask, test_mask = get_temporal_split_masks(
-        time_steps_raw, y, train_end=train_end, val_end=val_end, device=device,
+    train_mask_cpu, val_mask_cpu, test_mask_cpu = get_temporal_split_masks(
+        time_steps_raw, y_cpu, train_end=train_end, val_end=val_end, device=None,
     )
+
+    x_raw = df_feat.drop(columns=["txId", "time_step"]).values
+    scaler = StandardScaler()
+    scaler.fit(x_raw[train_mask_cpu.numpy()])
+    x = torch.tensor(scaler.transform(x_raw), dtype=torch.float)
+
+    y = y_cpu
+    train_mask, val_mask, test_mask = train_mask_cpu, val_mask_cpu, test_mask_cpu
+    if device is not None:
+        x, y = x.to(device), y.to(device)
+        train_mask = train_mask.to(device)
+        val_mask = val_mask.to(device)
+        test_mask = test_mask.to(device)
 
     n_pos = (y[train_mask] == 1).sum().item()
     n_neg = (y[train_mask] == 0).sum().item()

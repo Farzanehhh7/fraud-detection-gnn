@@ -127,7 +127,9 @@ class EarlyStopper:
 
 
 def save_checkpoint(model, path, extra=None):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    dirname = os.path.dirname(path)
+    if dirname:
+        os.makedirs(dirname, exist_ok=True)
     payload = {"model_state": model.state_dict()}
     if extra:
         payload.update(extra)
