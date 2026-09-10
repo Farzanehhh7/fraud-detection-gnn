@@ -1,0 +1,26 @@
+# Rerun list — Elliptic scripts affected by the StandardScaler leak fix in
+# src/fraud_gnn/data/elliptic.py (scaler now fit on train_mask only).
+# Every script below calls load_elliptic() and therefore needs fresh numbers.
+# Deliberately excludes 00_baseline_gcn.py (single-seed sanity check, not
+# load-bearing for any reported hypothesis test) and all samld/* scripts
+# (unaffected — they load a completely separate data module).
+#
+# Usage:
+#   python run_pipeline.py order_elliptic_post_scalerfix.txt --log-file run_log_post_scalerfix.txt
+#
+# Do NOT pass --resume — pipeline_state.txt may already list these paths as
+# completed from the original run, and --resume would silently skip them.
+
+experiments/elliptic/01_train_tie_baseline.py
+experiments/elliptic/02_significance_test_5seed.py
+experiments/elliptic/03_diagnostics_heterophily.py
+experiments/elliptic/04_diagnostics_edge_leakage.py
+experiments/elliptic/05_hyperparameter_search.py
+experiments/elliptic/06_final_checkpoint.py
+experiments/elliptic/07_significance_test_15seed.py
+experiments/elliptic/08_explainability.py
+experiments/elliptic/archived/gat_attention.py
+experiments/elliptic/archived/hybrid_model.py
+experiments/elliptic/archived/triple_attention.py
+experiments/elliptic/archived/film_modulation.py
+experiments/elliptic/archived/skip_gcn.py
