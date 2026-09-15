@@ -31,3 +31,4 @@ experiments/elliptic/02_significance_test_5seed.py
 experiments/elliptic/03_diagnostics_heterophily.py
 experiments/elliptic/04_diagnostics_edge_leakage.py
 experiments/elliptic/05_hyperparameter_search.py
+experiments/samld/13_binary_baseline_multiseed.py
