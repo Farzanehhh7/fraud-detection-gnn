@@ -10,6 +10,7 @@ experiments/elliptic/04_diagnostics_edge_leakage.py
 experiments/elliptic/05_hyperparameter_search.py
 experiments/elliptic/06_final_checkpoint.py
 experiments/elliptic/07_significance_test_15seed.py
+experiments/elliptic/09_significance_test_architectures_15seed.py
 experiments/elliptic/08_explainability.py
 
 
@@ -37,3 +38,4 @@ experiments/samld/09_coarse_family_classification.py
 experiments/samld/10_explainability.py
 experiments/samld/11_behavioural_change_features.py
 experiments/samld/12_behavioural_change_evaluation.py
+experiments/samld/14_significance_test_binary_15seed.py
