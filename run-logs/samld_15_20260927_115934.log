@@ -1,0 +1,67 @@
+[این اجرا هم‌زمان توی این فایل ذخیره می‌شه: run-logs\samld_15_20260927_115934.log]
+D:\fraud-detection-gnn-clean\.venv\Lib\site-packages\torch\jit\_script.py:1485: FutureWarning: `torch.jit.script` is not supported in Python 3.14+ and may break. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Using device: cpu
+Loading real SAML-D v3 data...
+seed=   42  F1=0.0745  AUC=0.8494  threshold=0.95
+seed=    1  F1=0.0629  AUC=0.8669  threshold=0.93
+seed=    7  F1=0.0574  AUC=0.8722  threshold=0.82
+seed=  123  F1=0.0824  AUC=0.8631  threshold=0.90
+seed= 2024  F1=0.0607  AUC=0.8511  threshold=0.95
+seed=    2  F1=0.0643  AUC=0.8521  threshold=0.60
+seed=    3  F1=0.0635  AUC=0.8500  threshold=0.87
+seed=    4  F1=0.0919  AUC=0.8658  threshold=0.95
+seed=    5  F1=0.0646  AUC=0.8427  threshold=0.92
+seed=    6  F1=0.0702  AUC=0.8645  threshold=0.95
+seed=    8  F1=0.0786  AUC=0.8482  threshold=0.95
+seed=    9  F1=0.0530  AUC=0.8430  threshold=0.91
+seed=   10  F1=0.0693  AUC=0.8524  threshold=0.94
+seed=   11  F1=0.0703  AUC=0.8579  threshold=0.78
+seed=   12  F1=0.0592  AUC=0.8537  threshold=0.69
+
+ذخیره شد: outputs/metrics/samld_hybrid_15seed_results.csv
+
+======================================================================
+مقایسه‌ی آماری: Hybrid در برابر GraphSAGE (۱۵ seed، SAML-D)
+======================================================================
+
+--- GraphSAGE (AUC) در برابر Hybrid (AUC) ---
+میانگین GraphSAGE (AUC): 0.7872   میانگین Hybrid (AUC): 0.8555
+میانگین تفاوت: -0.0684   t = -11.853   p = 0.0000
+تفاوت از نظر آماری معنادار است، p کمتر از 0.05.
+
+--- GraphSAGE (PR-AUC) در برابر Hybrid (PR-AUC) ---
+میانگین GraphSAGE (PR-AUC): 0.0340   میانگین Hybrid (PR-AUC): 0.0368
+میانگین تفاوت: -0.0028   t = -0.579   p = 0.5717
+تفاوت از نظر آماری معنادار نیست، ممکنه فقط نویز seed باشه.
+
+--- GraphSAGE (F1) در برابر Hybrid (F1) ---
+میانگین GraphSAGE (F1): 0.0684   میانگین Hybrid (F1): 0.0682
+میانگین تفاوت: 0.0002   t = 0.019   p = 0.9854
+تفاوت از نظر آماری معنادار نیست، ممکنه فقط نویز seed باشه.
+
+--- GraphSAGE (Precision) در برابر Hybrid (Precision) ---
+میانگین GraphSAGE (Precision): 0.0538   میانگین Hybrid (Precision): 0.0425
+میانگین تفاوت: 0.0114   t = 0.758   p = 0.4609
+تفاوت از نظر آماری معنادار نیست، ممکنه فقط نویز seed باشه.
+
+--- GraphSAGE (Recall) در برابر Hybrid (Recall) ---
+میانگین GraphSAGE (Recall): 0.2454   میانگین Hybrid (Recall): 0.2203
+میانگین تفاوت: 0.0250   t = 0.664   p = 0.5173
+تفاوت از نظر آماری معنادار نیست، ممکنه فقط نویز seed باشه.
+
+--- GraphSAGE (MCC) در برابر Hybrid (MCC) ---
+میانگین GraphSAGE (MCC): 0.0836   میانگین Hybrid (MCC): 0.0811
+میانگین تفاوت: 0.0025   t = 0.351   p = 0.7311
+تفاوت از نظر آماری معنادار نیست، ممکنه فقط نویز seed باشه.
+
+======================================================================
+جدول نهایی
+======================================================================
+architecture    metric  mean_graphsage  mean_variant  mean_diff   t_stat  p_value  significant_at_0.05 graphsage_win_ratio
+      Hybrid       AUC          0.7872        0.8555    -0.0684 -11.8530   0.0000                 True                0/15
+      Hybrid    PR-AUC          0.0340        0.0368    -0.0028  -0.5791   0.5717                False                4/15
+      Hybrid        F1          0.0684        0.0682     0.0002   0.0186   0.9854                False                5/15
+      Hybrid Precision          0.0538        0.0425     0.0114   0.7582   0.4609                False                5/15
+      Hybrid    Recall          0.2454        0.2203     0.0250   0.6643   0.5173                False                6/15
+      Hybrid       MCC          0.0836        0.0811     0.0025   0.3506   0.7311                False                6/15
